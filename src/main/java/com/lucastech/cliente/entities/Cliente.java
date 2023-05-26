@@ -1,34 +1,35 @@
 package com.lucastech.cliente.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.UUID;
 
 @Entity
-@Table(name = "tb_client")
+@Table(name = "tb_cliente")
+@Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Cliente {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID uuid;
+
     @Column(nullable = false)
     private String nome;
-    @Column(nullable = false)
 
+    @Column(nullable = false, unique = true)
     private String cpf;
-    @Column(nullable = false)
+
+    @Column(nullable = false, unique = true)
     private String email;
+
     @Column(nullable = false)
     private String endereco;
+
     @Column(nullable = false)
     private String telefone;
-
-
 }
